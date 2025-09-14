@@ -1,0 +1,184 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* BreedAI Design System - Agricultural & Professional Theme */
+
+@layer base {
+  :root {
+    /* Core Brand Colors */
+    --background: 0 0% 98%;
+    --foreground: 142 30% 15%;
+    
+    /* Agricultural Green Palette */
+    --primary: 142 45% 25%;
+    --primary-foreground: 0 0% 98%;
+    --primary-light: 142 35% 35%;
+    --primary-dark: 142 55% 20%;
+    
+    /* Warm Earth Accent */
+    --secondary: 35 65% 92%;
+    --secondary-foreground: 142 45% 25%;
+    --accent: 28 85% 65%;
+    --accent-foreground: 0 0% 98%;
+    
+    /* Success & Confirmation */
+    --success: 140 60% 45%;
+    --success-foreground: 0 0% 98%;
+    
+    /* Warning & Low Confidence */
+    --warning: 45 90% 60%;
+    --warning-foreground: 30 20% 15%;
+    
+    /* Error & Correction */
+    --destructive: 0 75% 55%;
+    --destructive-foreground: 0 0% 98%;
+    
+    /* Neutral Tones */
+    --muted: 142 15% 94%;
+    --muted-foreground: 142 20% 45%;
+    --border: 142 20% 88%;
+    --input: 142 20% 88%;
+    --ring: 142 45% 25%;
+    
+    /* Card & Surface */
+    --card: 0 0% 100%;
+    --card-foreground: 142 30% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 142 30% 15%;
+    
+    /* Sidebar (unused but keeping for compatibility) */
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 142 30% 15%;
+    --sidebar-primary: 142 45% 25%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 35 65% 92%;
+    --sidebar-accent-foreground: 142 45% 25%;
+    --sidebar-border: 142 20% 88%;
+    --sidebar-ring: 142 45% 25%;
+    
+    --radius: 0.75rem;
+    
+    /* BreedAI Custom Properties */
+    --gradient-primary: linear-gradient(135deg, hsl(142 45% 25%), hsl(160 40% 30%));
+    --gradient-secondary: linear-gradient(135deg, hsl(35 65% 92%), hsl(45 55% 88%));
+    --gradient-hero: linear-gradient(135deg, hsl(142 45% 25%), hsl(160 40% 30%), hsl(180 35% 35%));
+    --shadow-soft: 0 4px 20px -4px hsl(142 45% 25% / 0.1);
+    --shadow-elevated: 0 8px 30px -8px hsl(142 45% 25% / 0.15);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .dark {
+    --background: 142 30% 8%;
+    --foreground: 0 0% 95%;
+    --card: 142 25% 12%;
+    --card-foreground: 0 0% 95%;
+    --popover: 142 25% 12%;
+    --popover-foreground: 0 0% 95%;
+    --primary: 142 40% 70%;
+    --primary-foreground: 142 30% 8%;
+    --secondary: 142 20% 20%;
+    --secondary-foreground: 0 0% 95%;
+    --muted: 142 20% 20%;
+    --muted-foreground: 142 15% 65%;
+    --accent: 28 75% 55%;
+    --accent-foreground: 142 30% 8%;
+    --success: 140 50% 55%;
+    --success-foreground: 142 30% 8%;
+    --warning: 45 85% 65%;
+    --warning-foreground: 142 30% 8%;
+    --destructive: 0 65% 60%;
+    --destructive-foreground: 0 0% 95%;
+    --border: 142 20% 25%;
+    --input: 142 20% 25%;
+    --ring: 142 40% 70%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+  
+  /* Mobile-first optimizations */
+  html {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+  
+  /* Custom utility classes */
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  
+  .gradient-secondary {
+    background: var(--gradient-secondary);
+  }
+  
+  .gradient-hero {
+    background: var(--gradient-hero);
+  }
+  
+  .shadow-soft {
+    box-shadow: var(--shadow-soft);
+  }
+  
+  .shadow-elevated {
+    box-shadow: var(--shadow-elevated);
+  }
+  
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+  
+  /* Enhanced focus states for accessibility */
+  .focus-ring {
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2;
+  }
+  
+  /* Camera preview styles */
+  .camera-preview {
+    aspect-ratio: 4/3;
+    border-radius: var(--radius);
+    overflow: hidden;
+  }
+  
+  /* Breed card animations */
+  .breed-card {
+    transition: var(--transition-smooth);
+  }
+  
+  .breed-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-elevated);
+  }
+}
+
+@layer components {
+  /* Mobile-optimized button sizes */
+  .btn-mobile {
+    @apply min-h-12 px-6 text-base font-medium;
+  }
+  
+  .btn-mobile-lg {
+    @apply min-h-14 px-8 text-lg font-semibold;
+  }
+  
+  /* Confidence indicator styles */
+  .confidence-high {
+    @apply bg-success/10 text-success border-success/20;
+  }
+  
+  .confidence-medium {
+    @apply bg-warning/10 text-warning-foreground border-warning/20;
+  }
+  
+  .confidence-low {
+    @apply bg-destructive/10 text-destructive border-destructive/20;
+  }
+}
